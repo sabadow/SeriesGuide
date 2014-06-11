@@ -16,7 +16,6 @@
 
 apply plugin: "java"
 apply plugin: "maven"
-apply plugin: "signing"
 
 jar.baseName = "seriesguide-api"
 group = "com.uwetrottmann.seriesguide"
@@ -70,52 +69,4 @@ artifacts {
 
 dependencies {
     compile files("${android.sdk}/platforms/${android.target}/android.jar")
-}
-
-signing {
-    sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            pom.project {
-                name "SeriesGuide API"
-                packaging "jar"
-                description "Extension API for SeriesGuide to provide custom actions on media items"
-                url "http://seriesgui.de/api"
-
-                licenses {
-                    license {
-                        name "The Apache Software License, Version 2.0"
-                        url "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                    }
-                }
-
-                developers {
-                    developer {
-                        id "uwetrottmann"
-                        name "Uwe Trottmann"
-                        email "uwe.trottmann@gmail.com"
-                    }
-                }
-
-                scm {
-                    url "https://github.com/UweTrottmann/SeriesGuide.git"
-                    connection "scm:git:git://github.com/UweTrottmann/SeriesGuide.git"
-                    developerConnection "scm:git:git@github.com:UweTrottmann/SeriesGuide.git"
-                }
-            }
-        }
-    }
 }

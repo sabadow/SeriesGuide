@@ -27,7 +27,6 @@ import com.battlelancer.seriesguide.settings.AppSettings;
 import com.battlelancer.seriesguide.settings.DisplaySettings;
 import com.battlelancer.seriesguide.util.ImageProvider;
 import com.battlelancer.seriesguide.util.Utils;
-import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Logger;
 import com.uwetrottmann.androidutils.AndroidUtils;
@@ -59,7 +58,6 @@ public class SeriesGuideApplication extends Application {
         if (!BuildConfig.DEBUG || FLAVOR_INTERNAL.equals(BuildConfig.FLAVOR)) {
             // crash and error reporting
             Timber.plant(new AnalyticsTree());
-            Crashlytics.start(this);
         }
 
         // Set provider authority

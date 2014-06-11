@@ -2,22 +2,15 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven {
-            url 'http://download.crashlytics.com/maven'
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.10.+'
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
-        maven {
-            url 'http://download.crashlytics.com/maven'
-        }
     }
 }
 

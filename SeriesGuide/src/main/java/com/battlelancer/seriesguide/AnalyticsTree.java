@@ -16,7 +16,6 @@
 
 package com.battlelancer.seriesguide;
 
-import com.crashlytics.android.Crashlytics;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import retrofit.RetrofitError;
@@ -81,7 +80,6 @@ public class AnalyticsTree extends Timber.HollowTree implements Timber.TaggedTre
             }
         }
 
-        Crashlytics.logException(t);
     }
 
     @Override
@@ -108,6 +106,5 @@ public class AnalyticsTree extends Timber.HollowTree implements Timber.TaggedTre
         if (message == null) {
             return;
         }
-        Crashlytics.log(level + "/" + tag + ": " + String.format(message, args));
     }
 }
